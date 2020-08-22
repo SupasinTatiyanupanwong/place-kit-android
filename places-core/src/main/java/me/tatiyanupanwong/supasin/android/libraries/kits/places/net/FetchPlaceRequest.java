@@ -23,6 +23,11 @@ import java.util.List;
 
 import me.tatiyanupanwong.supasin.android.libraries.kits.places.model.Place;
 
+/**
+ * Request used by {@link PlacesClient#fetchPlace(FetchPlaceRequest) fetchPlace(FetchPlaceRequest)}.
+ *
+ * @since 1.0.0
+ */
 public class FetchPlaceRequest {
 
     public final String mPlaceId;

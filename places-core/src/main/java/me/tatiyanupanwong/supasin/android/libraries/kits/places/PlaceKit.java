@@ -24,7 +24,9 @@ import me.tatiyanupanwong.supasin.android.libraries.kits.internal.Preconditions;
 import me.tatiyanupanwong.supasin.android.libraries.kits.places.net.PlacesClient;
 
 /**
- * The main entry point for Places APIs.
+ * The main entry point for Place Kit APIs.
+ *
+ * @since 1.0.0
  */
 public final class PlaceKit {
 
@@ -32,6 +34,8 @@ public final class PlaceKit {
 
     /**
      * Creates an instance of {@link PlacesClient} for a given {@link Context}.
+     *
+     * @return an instance of {@link PlacesClient} for a given {@link Context}.
      */
     public static @NonNull PlacesClient createClient(@NonNull Context context) {
         Preconditions.checkNotNull(context);

@@ -22,8 +22,20 @@ import java.util.List;
 
 import me.tatiyanupanwong.supasin.android.libraries.kits.places.model.AutocompletePrediction;
 
+/**
+ * Response for {@link FindAutocompletePredictionsRequest}.
+ *
+ * @since 1.0.0
+ */
 public interface FindAutocompletePredictionsResponse {
 
+    /**
+     * Returns the {@link AutocompletePrediction} list returned by the response.
+     * <p>
+     * This list is unmodifiable.
+     *
+     * @return the {@link AutocompletePrediction} list returned by the response.
+     */
     @NonNull List<AutocompletePrediction> getAutocompletePredictions();
 
 }

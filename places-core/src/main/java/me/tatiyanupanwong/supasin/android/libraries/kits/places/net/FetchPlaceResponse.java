@@ -20,8 +20,18 @@ import androidx.annotation.NonNull;
 
 import me.tatiyanupanwong.supasin.android.libraries.kits.places.model.Place;
 
+/**
+ * Response for {@link FetchPlaceRequest}.
+ *
+ * @since 1.0.0
+ */
 public interface FetchPlaceResponse {
 
+    /**
+     * Returns the {@link Place} of the response to the corresponding {@link FetchPlaceRequest}.
+     *
+     * @return the {@link Place} of the response to the corresponding {@link FetchPlaceRequest}.
+     */
     @NonNull Place getPlace();
 
 }

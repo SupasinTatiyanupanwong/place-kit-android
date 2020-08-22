@@ -16,12 +16,43 @@
 
 package me.tatiyanupanwong.supasin.android.libraries.kits.places.model;
 
+import androidx.annotation.NonNull;
+
+/**
+ * Represents an autocomplete suggestion of a place, based on a particular text query.
+ * <p>
+ * An AutocompletePrediction includes the description of the suggested place as well as basic
+ * details including place ID and types.
+ *
+ * @since 1.0.0
+ */
 public interface AutocompletePrediction {
 
-    String getPlaceId();
+    /**
+     * Returns the place ID of the place being referred to by this prediction.
+     *
+     * @return the place ID of the place being referred to by this prediction.
+     */
+    @NonNull String getPlaceId();
 
-    String getPrimaryText();
+    /**
+     * Returns the primary text of a place. This will usually be the name of the place.
+     * <p>
+     * Example: "Eiffel Tower", "123 Pitt Street"
+     *
+     * @return the primary text of a place. This will usually be the name of the place.
+     */
+    @NonNull String getPrimaryText();
 
-    String getSecondaryText();
+    /**
+     * Returns the secondary text of a place. This provides extra context on the place, and can
+     * be used as a second line when showing autocomplete predictions.
+     * <p>
+     * Example: "Avenue Anatole France, Paris, France", "Sydney, New South Wales"
+     *
+     * @return the secondary text of a place. This provides extra context on the place, and can
+     * be used as a second line when showing autocomplete predictions.
+     */
+    @NonNull String getSecondaryText();
 
 }

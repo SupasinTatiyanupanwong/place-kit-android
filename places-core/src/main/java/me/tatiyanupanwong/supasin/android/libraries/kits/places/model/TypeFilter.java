@@ -16,10 +16,31 @@
 
 package me.tatiyanupanwong.supasin.android.libraries.kits.places.model;
 
+/**
+ * Filter to restrict the result set of autocomplete predictions to certain types.
+ *
+ * @since 1.0.0
+ */
 public enum TypeFilter {
+
+    /**
+     * Only return geocoding results with a precise address.
+     */
     ADDRESS,
+
     CITIES,
+
+    /**
+     * Only return results that are classified as businesses.
+     */
     ESTABLISHMENT,
+
+    /**
+     * Only return geocoding results, rather than business results. For example, parks, cities and
+     * street addresses.
+     */
     GEOCODE,
+
     REGIONS
+
 }

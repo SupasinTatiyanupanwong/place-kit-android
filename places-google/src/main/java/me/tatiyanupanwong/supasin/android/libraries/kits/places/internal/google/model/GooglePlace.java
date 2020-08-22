@@ -37,13 +37,18 @@ public class GooglePlace implements Place {
     }
 
     @Override
-    public String getId() {
+    public @Nullable String getId() {
         return mDelegate.getId();
     }
 
     @Override
-    public String getName() {
+    public @Nullable String getName() {
         return mDelegate.getName();
+    }
+
+    @Override
+    public @Nullable String getAddress() {
+        return mDelegate.getAddress();
     }
 
     @Override

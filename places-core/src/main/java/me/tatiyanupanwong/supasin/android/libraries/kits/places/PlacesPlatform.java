@@ -23,6 +23,9 @@ import androidx.annotation.Nullable;
 
 import me.tatiyanupanwong.supasin.android.libraries.kits.internal.Preconditions;
 
+/**
+ * @since 1.0.0
+ */
 abstract class PlacesPlatform {
 
     private static PlacesPlatform sPlatform;

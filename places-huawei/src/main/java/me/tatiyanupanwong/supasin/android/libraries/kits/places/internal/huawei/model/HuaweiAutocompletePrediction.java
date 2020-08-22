@@ -39,17 +39,17 @@ public class HuaweiAutocompletePrediction implements AutocompletePrediction {
     }
 
     @Override
-    public String getPlaceId() {
+    public @NonNull String getPlaceId() {
         return mDelegate.getSiteId();
     }
 
     @Override
-    public String getPrimaryText() {
+    public @NonNull String getPrimaryText() {
         return mDelegate.getName();
     }
 
     @Override
-    public String getSecondaryText() {
+    public @NonNull String getSecondaryText() {
         return mDelegate.getFormatAddress();
     }
 
@@ -82,11 +82,7 @@ public class HuaweiAutocompletePrediction implements AutocompletePrediction {
         return new HuaweiAutocompletePrediction(delegate);
     }
 
-    public static @Nullable List<AutocompletePrediction> wrap(@Nullable List<Site> delegates) {
-        if (delegates == null) {
-            return null;
-        }
-
+    public static @NonNull List<AutocompletePrediction> wrap(@NonNull List<Site> delegates) {
         List<AutocompletePrediction> list = new ArrayList<>();
         for (int iter = 0, size = delegates.size(); iter < size; iter++) {
             list.add(HuaweiAutocompletePrediction.wrap(delegates.get(iter)));

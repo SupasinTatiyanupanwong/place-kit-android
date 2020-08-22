@@ -21,6 +21,13 @@ import androidx.annotation.Nullable;
 
 import me.tatiyanupanwong.supasin.android.libraries.kits.places.model.TypeFilter;
 
+/**
+ * Request used by {@link
+ * PlacesClient#findAutocompletePredictions(FindAutocompletePredictionsRequest)
+ * findAutocompletePredictions(FindAutocompletePredictionsRequest)}.
+ *
+ * @since 1.0.0
+ */
 public class FindAutocompletePredictionsRequest {
 
     public final String mQuery;

@@ -20,6 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
 
+import java.util.Collections;
 import java.util.List;
 
 import me.tatiyanupanwong.supasin.android.libraries.kits.places.internal.google.model.GoogleAutocompletePrediction;
@@ -46,10 +47,9 @@ public class GoogleFindAutocompletePredictionsResponse implements
     @Override
     public @NonNull List<AutocompletePrediction> getAutocompletePredictions() {
         if (mAutocompletePredictions == null) {
-            mAutocompletePredictions =
-                    GoogleAutocompletePrediction.wrap(mDelegate.getAutocompletePredictions());
+            mAutocompletePredictions = Collections.unmodifiableList(
+                    GoogleAutocompletePrediction.wrap(mDelegate.getAutocompletePredictions()));
         }
-        //noinspection ConstantConditions
         return mAutocompletePredictions;
     }
 

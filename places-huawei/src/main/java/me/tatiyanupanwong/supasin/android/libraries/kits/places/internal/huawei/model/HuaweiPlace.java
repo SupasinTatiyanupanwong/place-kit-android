@@ -37,13 +37,18 @@ public class HuaweiPlace implements Place {
     }
 
     @Override
-    public String getId() {
+    public @Nullable String getId() {
         return mDelegate.getSiteId();
     }
 
     @Override
-    public String getName() {
+    public @Nullable String getName() {
         return mDelegate.getName();
+    }
+
+    @Override
+    public @Nullable String getAddress() {
+        return mDelegate.getFormatAddress();
     }
 
     @Override

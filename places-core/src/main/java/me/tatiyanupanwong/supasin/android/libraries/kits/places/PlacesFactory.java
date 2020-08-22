@@ -25,6 +25,9 @@ import me.tatiyanupanwong.supasin.android.libraries.kits.places.net.PlacesClient
 
 import static androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP;
 
+/**
+ * @since 1.0.0
+ */
 @RestrictTo(LIBRARY_GROUP)
 public interface PlacesFactory {
 

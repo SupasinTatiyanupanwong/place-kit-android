@@ -46,13 +46,12 @@ public class HuaweiFindAutocompletePredictionsResponse implements
     @Override
     public @NonNull List<AutocompletePrediction> getAutocompletePredictions() {
         if (mAutocompletePredictions == null) {
-            if (mDelegate == null) {
+            if (mDelegate == null || mDelegate.getSites() == null) {
                 mAutocompletePredictions = Collections.emptyList();
             } else {
                 mAutocompletePredictions = HuaweiAutocompletePrediction.wrap(mDelegate.getSites());
             }
         }
-        //noinspection ConstantConditions
         return mAutocompletePredictions;
     }
 

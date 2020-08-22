@@ -26,6 +26,11 @@ import android.net.Uri;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+/**
+ * Initializes Place Kit on application startup.
+ *
+ * @since 1.0.0
+ */
 public final class PlaceKitInitProvider extends ContentProvider {
 
     @Override

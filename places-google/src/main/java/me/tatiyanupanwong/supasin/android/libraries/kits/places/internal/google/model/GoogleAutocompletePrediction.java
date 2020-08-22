@@ -40,17 +40,17 @@ public class GoogleAutocompletePrediction implements AutocompletePrediction {
     }
 
     @Override
-    public String getPlaceId() {
+    public @NonNull String getPlaceId() {
         return mDelegate.getPlaceId();
     }
 
     @Override
-    public String getPrimaryText() {
+    public @NonNull String getPrimaryText() {
         return mDelegate.getPrimaryText(null).toString();
     }
 
     @Override
-    public String getSecondaryText() {
+    public @NonNull String getSecondaryText() {
         return mDelegate.getSecondaryText(null).toString();
     }
 
@@ -85,13 +85,9 @@ public class GoogleAutocompletePrediction implements AutocompletePrediction {
         return new GoogleAutocompletePrediction(delegate);
     }
 
-    public static @Nullable List<AutocompletePrediction> wrap(
-            @Nullable List<com.google.android.libraries.places.api.model.AutocompletePrediction>
+    public static @NonNull List<AutocompletePrediction> wrap(
+            @NonNull List<com.google.android.libraries.places.api.model.AutocompletePrediction>
                     delegates) {
-        if (delegates == null) {
-            return null;
-        }
-
         List<AutocompletePrediction> list = new ArrayList<>();
         for (int iter = 0, size = delegates.size(); iter < size; iter++) {
             list.add(GoogleAutocompletePrediction.wrap(delegates.get(iter)));

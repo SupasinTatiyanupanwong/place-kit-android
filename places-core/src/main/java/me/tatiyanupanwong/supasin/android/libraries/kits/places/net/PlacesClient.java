@@ -16,15 +16,37 @@
 
 package me.tatiyanupanwong.supasin.android.libraries.kits.places.net;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
 
+import me.tatiyanupanwong.supasin.android.libraries.kits.places.PlaceKit;
 import me.tatiyanupanwong.supasin.android.libraries.kits.tasks.Task;
 
+/**
+ * Client that exposes the Places API methods. To get a {@link PlacesClient}, use {@link
+ * PlaceKit#createClient(Context)}.
+ *
+ * @since 1.0.0
+ */
 public interface PlacesClient {
 
+    /**
+     * Fetches autocomplete predictions.
+     *
+     * @param request The request specifying details of the autocomplete query.
+     * @return A task used for observing the request. Response containing the list of prediction
+     * objects.
+     */
     @NonNull Task<FindAutocompletePredictionsResponse> findAutocompletePredictions(
             @NonNull FindAutocompletePredictionsRequest request);
 
+    /**
+     * Fetches the details of a place.
+     *
+     * @param request The request specifying the place of interest.
+     * @return A task used for observing the request. Response containing the place of interest.
+     */
     @NonNull Task<FetchPlaceResponse> fetchPlace(
             @NonNull FetchPlaceRequest request);
 
