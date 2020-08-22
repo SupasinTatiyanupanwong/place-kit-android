@@ -17,7 +17,7 @@
 buildscript {
     repositories {
         // Huawei services configuration
-        maven { url 'http://developer.huawei.com/repo/' }
+        maven { url 'https://developer.huawei.com/repo/' }
     }
 
     dependencies {
@@ -29,8 +29,13 @@ buildscript {
 apply plugin: 'com.android.application'
 
 android {
+    compileSdkVersion 29
+
     defaultConfig {
-        applicationId "me.tatiyanupanwong.supasin.android.samples.kits.places"
+        applicationId 'me.tatiyanupanwong.supasin.android.samples.kits.places'
+
+        minSdkVersion 19
+        targetSdkVersion 29
     }
 
     flavorDimensions 'vendor'

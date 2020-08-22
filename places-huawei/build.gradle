@@ -22,6 +22,15 @@ rootProject.allprojects {
 
 apply plugin: 'com.android.library'
 
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 29
+    }
+}
+
 dependencies {
     api project(':places-core')
 
@@ -29,3 +38,5 @@ dependencies {
 
     implementation 'androidx.lifecycle:lifecycle-runtime:2.2.0'
 }
+
+apply from: 'publish.gradle'

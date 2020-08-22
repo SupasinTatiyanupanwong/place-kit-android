@@ -14,21 +14,15 @@
  * limitations under the License.
  */
 
-apply plugin: 'com.android.library'
+tasks.withType(Javadoc).all { enabled = false }
 
-android {
-    compileSdkVersion 29
+ext {
+    POM_ARTIFACT_ID = 'places-huawei'
 
-    defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 29
-    }
+    POM_NAME = 'Place Kit (Huawei)'
+    POM_DESCRIPTION = 'Provides HUAWEI Site Kit integration to Place Kit.'
+    POM_VERSION = '1.0.0'
 }
 
-dependencies {
-    api 'androidx.annotation:annotation:1.1.0'
-
-    api 'com.github.SupasinTatiyanupanwong:android-kits-base:develop-SNAPSHOT'
-}
-
-apply from: 'publish.gradle'
+apply from: rootProject.file("gradle/install.gradle")
+apply from: rootProject.file("gradle/bintray.gradle")

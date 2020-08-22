@@ -16,8 +16,19 @@
 
 apply plugin: 'com.android.library'
 
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 29
+    }
+}
+
 dependencies {
     api project(':places-core')
 
     implementation 'com.google.android.libraries.places:places:2.3.0'
 }
+
+apply from: 'publish.gradle'
