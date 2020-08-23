@@ -28,6 +28,8 @@ android {
 dependencies {
     api project(':places-core')
 
+    implementation 'me.tatiyanupanwong.supasin.android.libraries.kits.base:base-google:1.0.0'
+
     implementation 'com.google.android.libraries.places:places:2.3.0'
 }
 
