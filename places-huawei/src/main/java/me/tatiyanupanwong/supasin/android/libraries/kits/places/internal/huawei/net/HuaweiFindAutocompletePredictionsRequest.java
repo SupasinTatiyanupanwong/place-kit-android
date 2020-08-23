@@ -35,9 +35,9 @@ public final class HuaweiFindAutocompletePredictionsRequest {
     public static @NonNull QuerySuggestionRequest unwrap(
             @NonNull FindAutocompletePredictionsRequest wrapped) {
         final QuerySuggestionRequest request = new QuerySuggestionRequest();
-        request.setQuery(wrapped.mQuery);
-        request.setCountryCode(wrapped.mCountry);
-        request.setPoiTypes(HuaweiTypeFilter.unwrap(wrapped.mTypeFilter));
+        request.setQuery(wrapped.getQuery());
+        request.setCountryCode(wrapped.getCountry());
+        request.setPoiTypes(HuaweiTypeFilter.unwrap(wrapped.getTypeFilter()));
         return request;
     }
 

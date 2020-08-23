@@ -35,9 +35,9 @@ public final class GoogleFindAutocompletePredictionsRequest {
                     @NonNull FindAutocompletePredictionsRequest wrapped) {
         return com.google.android.libraries.places.api.net.FindAutocompletePredictionsRequest
                 .builder()
-                .setQuery(wrapped.mQuery)
-                .setCountry(wrapped.mCountry)
-                .setTypeFilter(GoogleTypeFilter.wrap(wrapped.mTypeFilter))
+                .setQuery(wrapped.getQuery())
+                .setCountry(wrapped.getCountry())
+                .setTypeFilter(GoogleTypeFilter.wrap(wrapped.getTypeFilter()))
                 .build();
     }
 

@@ -33,7 +33,7 @@ public final class HuaweiFetchPlaceRequest {
 
     public static @NonNull DetailSearchRequest unwrap(@NonNull FetchPlaceRequest wrapped) {
         final DetailSearchRequest request = new DetailSearchRequest();
-        request.setSiteId(wrapped.mPlaceId);
+        request.setSiteId(wrapped.getPlaceId());
         return request;
     }
 

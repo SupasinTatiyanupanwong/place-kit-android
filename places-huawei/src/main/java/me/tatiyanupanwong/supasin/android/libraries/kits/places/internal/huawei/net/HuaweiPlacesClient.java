@@ -66,7 +66,7 @@ public final class HuaweiPlacesClient implements PlacesClient {
 
                     @Override
                     public void onSearchError(SearchStatus status) {
-                        if (TextUtils.isEmpty(request.mQuery)) {
+                        if (TextUtils.isEmpty(request.getQuery())) {
                             // Empty query string will be treated as error by Huawei Site Kit.
                             future.set(HuaweiFindAutocompletePredictionsResponse.wrap(null));
                         } else {

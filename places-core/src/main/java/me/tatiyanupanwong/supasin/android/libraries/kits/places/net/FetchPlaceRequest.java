@@ -30,12 +30,20 @@ import me.tatiyanupanwong.supasin.android.libraries.kits.places.model.Place;
  */
 public class FetchPlaceRequest {
 
-    public final String mPlaceId;
-    public final List<Place.Field> mPlaceFields;
+    private final @NonNull String mPlaceId;
+    private final @NonNull List<Place.Field> mPlaceFields;
 
     private FetchPlaceRequest(@NonNull Builder builder) {
         mPlaceId = builder.mPlaceId;
         mPlaceFields = builder.mPlaceFields;
+    }
+
+    public @NonNull String getPlaceId() {
+        return mPlaceId;
+    }
+
+    public @NonNull List<Place.Field> getPlaceFields() {
+        return mPlaceFields;
     }
 
 

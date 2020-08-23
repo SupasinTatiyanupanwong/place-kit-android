@@ -30,14 +30,26 @@ import me.tatiyanupanwong.supasin.android.libraries.kits.places.model.TypeFilter
  */
 public class FindAutocompletePredictionsRequest {
 
-    public final String mQuery;
-    public final String mCountry;
-    public final TypeFilter mTypeFilter;
+    private final @Nullable String mQuery;
+    private final @Nullable String mCountry;
+    private final @Nullable TypeFilter mTypeFilter;
 
     private FindAutocompletePredictionsRequest(@NonNull Builder builder) {
         mQuery = builder.mQuery;
         mCountry = builder.mCountry;
         mTypeFilter = builder.mTypeFilter;
+    }
+
+    public @Nullable String getQuery() {
+        return mQuery;
+    }
+
+    public @Nullable String getCountry() {
+        return mCountry;
+    }
+
+    public @Nullable TypeFilter getTypeFilter() {
+        return mTypeFilter;
     }
 
 

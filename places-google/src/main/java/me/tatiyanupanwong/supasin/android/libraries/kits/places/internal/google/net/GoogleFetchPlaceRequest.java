@@ -33,7 +33,9 @@ public final class GoogleFetchPlaceRequest {
     public static @NonNull com.google.android.libraries.places.api.net.FetchPlaceRequest unwrap(
             @NonNull FetchPlaceRequest wrapped) {
         return com.google.android.libraries.places.api.net.FetchPlaceRequest
-                .newInstance(wrapped.mPlaceId, GooglePlace.Field.unwrap(wrapped.mPlaceFields));
+                .newInstance(
+                        wrapped.getPlaceId(),
+                        GooglePlace.Field.unwrap(wrapped.getPlaceFields()));
     }
 
 }
