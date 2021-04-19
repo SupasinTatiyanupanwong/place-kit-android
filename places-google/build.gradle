@@ -17,11 +17,11 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
 
     defaultConfig {
         minSdkVersion 19
-        targetSdkVersion 29
+        targetSdkVersion 30
     }
 }
 
@@ -30,7 +30,7 @@ dependencies {
 
     implementation 'me.tatiyanupanwong.supasin.android.libraries.kits.base:base-google:1.0.0'
 
-    implementation 'com.google.android.libraries.places:places:2.3.0'
+    implementation 'com.google.android.libraries.places:places:2.4.0'
 }
 
 apply from: 'publish.gradle'
