@@ -18,13 +18,11 @@ buildscript {
     repositories {
         google()
         jcenter()
+        mavenCentral()
     }
 
     dependencies {
         classpath 'com.android.tools.build:gradle:4.1.3'
-
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     }
 }
 
@@ -32,25 +30,8 @@ allprojects {
     repositories {
         google()
         jcenter()
+        mavenCentral()
     }
-}
-
-ext {
-    BINTRAY_REPOSITORY = 'android.libraries.kits.places'
-    BINTRAY_LICENSES = ["Apache-2.0"]
-
-    POM_GROUP_ID = 'me.tatiyanupanwong.supasin.android.libraries.kits.places'
-
-    POM_URL = 'https://github.com/SupasinTatiyanupanwong/place-kit-android'
-    POM_SCM_URL = 'https://github.com/SupasinTatiyanupanwong/place-kit-android'
-    POM_SCM_CONNECTION = 'https://github.com/SupasinTatiyanupanwong/place-kit-android.git'
-
-    POM_DEVELOPER_ID = 'supasintatiyanupanwong'
-    POM_DEVELOPER_NAME = 'Supasin Tatiyanupanwong'
-    POM_DEVELOPER_EMAIL = 'supasin@tatiyanupanwong.me'
-
-    POM_LICENCE_NAME = 'Apache License 2.0'
-    POM_LICENCE_URL = 'http://www.apache.org/licenses/LICENSE-2.0'
 }
 
 task clean(type: Delete) {
