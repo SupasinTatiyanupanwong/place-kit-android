@@ -14,23 +14,33 @@
  * limitations under the License.
  */
 
-apply plugin: 'com.android.library'
+package dev.supasintatiyanupanwong.libraries.android.kits.places.model;
 
-android {
-    compileSdkVersion 30
+/**
+ * Filter to restrict the result set of autocomplete predictions to certain types.
+ *
+ * @since 1.0.0
+ */
+public enum TypeFilter {
 
-    defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 30
-    }
+    /**
+     * Only return geocoding results with a precise address.
+     */
+    ADDRESS,
+
+    CITIES,
+
+    /**
+     * Only return results that are classified as businesses.
+     */
+    ESTABLISHMENT,
+
+    /**
+     * Only return geocoding results, rather than business results. For example, parks, cities and
+     * street addresses.
+     */
+    GEOCODE,
+
+    REGIONS
+
 }
-
-dependencies {
-    api project(':places-core')
-
-    implementation 'dev.supasintatiyanupanwong.libraries.android.kits.base:base-google:1.0.0'
-
-    implementation 'com.google.android.libraries.places:places:2.4.0'
-}
-
-apply from: 'publish.gradle'

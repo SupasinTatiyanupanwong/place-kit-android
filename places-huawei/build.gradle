@@ -34,7 +34,7 @@ android {
 dependencies {
     api project(':places-core')
 
-    implementation 'me.tatiyanupanwong.supasin.android.libraries.kits.base:base-huawei:1.0.0'
+    implementation 'dev.supasintatiyanupanwong.libraries.android.kits.base:base-huawei:1.0.0'
 
     implementation 'com.huawei.hms:site:4.0.1.300'
 

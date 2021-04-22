@@ -14,23 +14,23 @@
  * limitations under the License.
  */
 
-apply plugin: 'com.android.library'
+package dev.supasintatiyanupanwong.libraries.android.kits.places;
 
-android {
-    compileSdkVersion 30
+import android.content.Context;
 
-    defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 30
-    }
+import androidx.annotation.NonNull;
+import androidx.annotation.RestrictTo;
+
+import dev.supasintatiyanupanwong.libraries.android.kits.places.net.PlacesClient;
+
+import static androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP;
+
+/**
+ * @since 1.0.0
+ */
+@RestrictTo(LIBRARY_GROUP)
+public interface PlacesFactory {
+
+    @NonNull PlacesClient createClient(@NonNull Context context);
+
 }
-
-dependencies {
-    api project(':places-core')
-
-    implementation 'dev.supasintatiyanupanwong.libraries.android.kits.base:base-google:1.0.0'
-
-    implementation 'com.google.android.libraries.places:places:2.4.0'
-}
-
-apply from: 'publish.gradle'

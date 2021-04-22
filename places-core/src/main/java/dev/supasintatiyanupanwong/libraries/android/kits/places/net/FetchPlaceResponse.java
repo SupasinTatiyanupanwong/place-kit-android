@@ -14,23 +14,24 @@
  * limitations under the License.
  */
 
-apply plugin: 'com.android.library'
+package dev.supasintatiyanupanwong.libraries.android.kits.places.net;
 
-android {
-    compileSdkVersion 30
+import androidx.annotation.NonNull;
 
-    defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 30
-    }
+import dev.supasintatiyanupanwong.libraries.android.kits.places.model.Place;
+
+/**
+ * Response for {@link FetchPlaceRequest}.
+ *
+ * @since 1.0.0
+ */
+public interface FetchPlaceResponse {
+
+    /**
+     * Returns the {@link Place} of the response to the corresponding {@link FetchPlaceRequest}.
+     *
+     * @return the {@link Place} of the response to the corresponding {@link FetchPlaceRequest}.
+     */
+    @NonNull Place getPlace();
+
 }
-
-dependencies {
-    api project(':places-core')
-
-    implementation 'dev.supasintatiyanupanwong.libraries.android.kits.base:base-google:1.0.0'
-
-    implementation 'com.google.android.libraries.places:places:2.4.0'
-}
-
-apply from: 'publish.gradle'

@@ -17,7 +17,7 @@
 
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
-    package="me.tatiyanupanwong.supasin.android.libraries.kits.places">
+    package="dev.supasintatiyanupanwong.libraries.android.kits.places">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -25,7 +25,7 @@
 
         <provider
             android:name=".PlaceKitInitProvider"
-            android:authorities="${applicationId}.PlacesKitInitProvider"
+            android:authorities="${applicationId}.PlaceKitInitProvider"
             android:exported="false" />
 
     </application>

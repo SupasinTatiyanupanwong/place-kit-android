@@ -1,7 +1,7 @@
 # Place Kit
 
 [![Download](https://api.bintray.com/packages/supasintatiyanupanwong/android.libraries.kits.places/places-core/images/download.svg)](https://bintray.com/supasintatiyanupanwong/android.libraries.kits.places/places-core/_latestVersion)
-[![javadoc](https://javadoc.io/badge2/me.tatiyanupanwong.supasin.android.libraries.kits.places/places-core/javadoc.svg)](https://javadoc.io/doc/me.tatiyanupanwong.supasin.android.libraries.kits.places/places-core)
+[![javadoc](https://javadoc.io/badge2/dev.supasintatiyanupanwong.libraries.android.kits.places/places-core/javadoc.svg)](https://javadoc.io/doc/dev.supasintatiyanupanwong.libraries.android.kits.places/places-core)
 [![license](https://img.shields.io/github/license/SupasinTatiyanupanwong/place-kit-android.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
 Place Kit is an abstraction wrapper that encapsulates Google Places SDK for Android and HUAWEI Site Kit.
@@ -23,10 +23,10 @@ Add the dependencies for the artifacts you need in the `build.gradle` file for y
 ```groovy
 dependencies {
     // To use the Google Places SDK for Android via Place Kit
-    implementation 'me.tatiyanupanwong.supasin.android.libraries.kits.places:places-google:1.0.0'
+    implementation 'dev.supasintatiyanupanwong.libraries.android.kits.places:places-google:1.0.0'
 
     // To use the HUAWEI Site Kit via Place Kit
-    implementation 'me.tatiyanupanwong.supasin.android.libraries.kits.places:places-huawei:1.0.0'
+    implementation 'dev.supasintatiyanupanwong.libraries.android.kits.places:places-huawei:1.0.0'
 }
 ```
 
@@ -56,8 +56,8 @@ configurations {
 }
 
 dependencies {
-    google 'me.tatiyanupanwong.supasin.android.libraries.kits.places:places-google:1.0.0'
-    huawei 'me.tatiyanupanwong.supasin.android.libraries.kits.places:places-huawei:1.0.0'
+    google 'dev.supasintatiyanupanwong.libraries.android.kits.places:places-google:1.0.0'
+    huawei 'dev.supasintatiyanupanwong.libraries.android.kits.places:places-huawei:1.0.0'
 }
 ```
 

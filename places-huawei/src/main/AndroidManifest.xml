@@ -15,4 +15,4 @@
   ~ limitations under the License.
 -->
 
-<manifest package="me.tatiyanupanwong.supasin.android.libraries.kits.places.internal.huawei" />
+<manifest package="dev.supasintatiyanupanwong.libraries.android.kits.places.internal.huawei" />
