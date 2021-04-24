@@ -15,3 +15,13 @@
  */
 
 tasks.withType(Javadoc).all { enabled = false }
+
+ext {
+    POM_ARTIFACT_ID = 'places-huawei'
+    POM_NAME = 'Place Kit (Huawei)'
+    POM_DESCRIPTION = 'Provides HUAWEI Site Kit integration to Place Kit.'
+
+    VERSION_NAME = '1.0.0'
+}
+
+apply plugin: 'com.vanniktech.maven.publish'

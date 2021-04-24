@@ -13,3 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+tasks.withType(Javadoc) {
+    title = POM_NAME + " " + VERSION_NAME + " API"
+}
+
+ext {
+    POM_ARTIFACT_ID = 'places-core'
+    POM_NAME = 'Place Kit (Core)'
+    POM_DESCRIPTION = 'Encapsulates Google Places SDK for Android and HUAWEI Site Kit.'
+
+
+    VERSION_NAME = '1.0.0'
+}
+
+apply plugin: 'com.vanniktech.maven.publish'
