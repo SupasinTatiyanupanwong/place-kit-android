@@ -38,7 +38,7 @@ dependencies {
 
     implementation 'dev.supasintatiyanupanwong.libraries.android.kits.base:base-huawei:1.0.0'
 
-    implementation 'com.huawei.hms:site:4.0.1.300'
+    implementation 'com.huawei.hms:site:5.2.0.300'
 
     implementation 'androidx.lifecycle:lifecycle-runtime:2.3.1'
 }

@@ -47,8 +47,8 @@ public final class HuaweiPlacesClient implements PlacesClient {
 
     private final SearchService mDelegate;
 
-    public HuaweiPlacesClient(@NonNull Context context) {
-        mDelegate = SearchServiceFactory.create(context);
+    public HuaweiPlacesClient(@NonNull Context context, @NonNull String apiKey) {
+        mDelegate = SearchServiceFactory.create(context, apiKey);
     }
 
     @Override
