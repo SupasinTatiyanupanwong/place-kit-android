@@ -1,11 +1,11 @@
-/**
+/*
  * Copyright 2020 Supasin Tatiyanupanwong
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -17,20 +17,22 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
 
     defaultConfig {
         minSdkVersion 19
-        targetSdkVersion 29
+        targetSdkVersion 30
+
+        consumerProguardFiles 'consumer-rules.pro'
     }
 }
 
 dependencies {
     api project(':places-core')
 
-    implementation 'me.tatiyanupanwong.supasin.android.libraries.kits.base:base-google:1.0.0'
+    implementation 'dev.supasintatiyanupanwong.libraries.android.kits.base:base-google:1.0.0'
 
-    implementation 'com.google.android.libraries.places:places:2.3.0'
+    implementation 'com.google.android.libraries.places:places:2.4.0'
 }
 
 apply from: 'publish.gradle'

@@ -1,11 +1,11 @@
-/**
+/*
  * Copyright 2020 Supasin Tatiyanupanwong
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -23,22 +23,22 @@ rootProject.allprojects {
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
 
     defaultConfig {
         minSdkVersion 19
-        targetSdkVersion 29
+        targetSdkVersion 30
+
+        consumerProguardFiles 'consumer-rules.pro'
     }
 }
 
 dependencies {
     api project(':places-core')
 
-    implementation 'me.tatiyanupanwong.supasin.android.libraries.kits.base:base-huawei:1.0.0'
+    implementation 'dev.supasintatiyanupanwong.libraries.android.kits.base:base-huawei:1.0.0'
 
-    implementation 'com.huawei.hms:site:4.0.1.300'
-
-    implementation 'androidx.lifecycle:lifecycle-runtime:2.2.0'
+    implementation 'com.huawei.hms:site:5.2.0.300'
 }
 
 apply from: 'publish.gradle'
