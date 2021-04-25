@@ -1,6 +1,6 @@
 # Place Kit
 
-[![Download](https://api.bintray.com/packages/supasintatiyanupanwong/android.libraries.kits.places/places-core/images/download.svg)](https://bintray.com/supasintatiyanupanwong/android.libraries.kits.places/places-core/_latestVersion)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/dev.supasintatiyanupanwong.libraries.android.kits.places/places-core/badge.svg)](https://search.maven.org/search?q=g:dev.supasintatiyanupanwong.libraries.android.kits.places)
 [![javadoc](https://javadoc.io/badge2/dev.supasintatiyanupanwong.libraries.android.kits.places/places-core/javadoc.svg)](https://javadoc.io/doc/dev.supasintatiyanupanwong.libraries.android.kits.places/places-core)
 [![license](https://img.shields.io/github/license/SupasinTatiyanupanwong/place-kit-android.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
@@ -10,13 +10,38 @@ Place Kit is an abstraction wrapper that encapsulates Google Places SDK for Andr
 
 The library consists of 3 artifacts; `places-core`, `places-google`, and `places-huawei`.
 
-* `places-core` artifact provides an abstraction interface to interact with Places APIs.
-* `places-google` artifact provides the Google Places SDK for Android integration to Place Kit.
-* `places-huawei` artifact provides the HUAWEI Site Kit integration to Place Kit.
+`places-core` artifact provides an abstraction interface to interact with Places APIs.
+
+`places-google` artifact provides the Google Places SDK for Android integration to Place Kit.
+
+`places-huawei` artifact provides the HUAWEI Site Kit integration to Place Kit.
 
 Each artifact transitively depended on its corresponding [base](https://github.com/SupasinTatiyanupanwong/android-kits-base) artifacts.
 
+## Usage
+
+### Migrating from the existing APIs
+
+| Google Places SDK for Android             | HUAWEI Site Kit                         | Place Kit                                                      |
+|:----------------------------------------- |:--------------------------------------- |:-------------------------------------------------------------- |
+| ``com.google.android.libraries.places.*`` | ``com.huawei.hms.site.*``               | ``dev.supasintatiyanupanwong.libraries.android.kits.places.*`` |
+| ``PlacesClient``                          | ``SearchService``                       | ``PlacesClient``                                               |
+| ``Places.createClient(context)``          | ``SearchServiceFactory.create(context)``| ``PlaceKit.createClient(context)``                             |
+| ``Place``                                 | ``Site``                                | ``Place``                                                      |
+| ``FetchPlaceRequest``                     | ``DetailSearchRequest``                 | ``FetchPlaceRequest``                                          |
+| ``FetchPlaceResponse``                    | ``DetailSearchResponse``                | ``FetchPlaceResponse``                                         |
+| ``FindAutocompletePredictionsRequest``    | ``QuerySuggestionRequest``              | ``FindAutocompletePredictionsRequest``                         |
+| ``FindAutocompletePredictionsResponse``   | ``QuerySuggestionResponse``             | ``FindAutocompletePredictionsResponse``                        |
+
+Notice that, the goal of this library is to provides 1:1 behaviors and interfaces to the Google Places SDK for Android as much as possible. Some functionality may not be available.
+
+### Disclaimer
+
+In no event shall we responsible or liable in any way for any claims, damages, losses, expenses, costs, or liabilities for any reason, howsoever arising, out of or in connection with your use of the service you may incur through this library. You are responsible for the payment of any fees or any charges associated with it that may be charged by your bank or credit card provider.
+
 ## Declaring dependencies
+
+To add a dependency on Place Kit, you must add the Maven Central repository together with the Google Maven repository and/or the Huawei Maven repository to your project.
 
 Add the dependencies for the artifacts you need in the `build.gradle` file for your app or module:
 
@@ -36,7 +61,7 @@ However, it is recommended to separate builds between them as next:
 
 ```groovy
 android {
-    ...
+    // ...
     flavorDimensions 'vendor'
     productFlavors {
         google
@@ -69,6 +94,11 @@ For more information about dependencies, see [Add build dependencies](https://de
 
 * [Places SDK for Android - Google Developer](https://developers.google.com/places/android-sdk/overview)
 * [Site Kit - HMS Core - HUAWEI Developer](https://developer.huawei.com/consumer/en/hms/huawei-sitekit/)
+
+## Feedback
+
+Your feedback helps make Place Kit better. Let us know if you discover new issues or have ideas for improving this library.
+Please take a look at the [existing issues](https://github.com/SupasinTatiyanupanwong/place-kit-android/issues) or the [existing discussions](https://github.com/SupasinTatiyanupanwong/place-kit-android/discussions) in this library before you create a new one.
 
 ## License
 
