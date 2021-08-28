@@ -20,6 +20,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
 import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
@@ -66,10 +67,10 @@ public class PlacePredictionsActivity extends AppCompatActivity {
 
         mPlacesClient = PlaceKit.createClient(this);
 
-        mViews.toolbar.setTitle("Place Kit Sample");
-        mViews.toolbar.inflateMenu(R.menu.place_predictions_menu);
+        mViews.mToolbar.setTitle("Place Kit Sample");
+        mViews.mToolbar.inflateMenu(R.menu.place_predictions_menu);
 
-        SearchView searchView = (SearchView) mViews.toolbar.getMenu()
+        SearchView searchView = (SearchView) mViews.mToolbar.getMenu()
                 .findItem(R.id.place_predictions_search)
                 .getActionView();
         searchView.setQueryHint("Search a Place");
@@ -85,7 +86,7 @@ public class PlacePredictionsActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(final String newText) {
-                mViews.progress.setIndeterminate(true);
+                mViews.mProgress.setIndeterminate(true);
 
                 // Cancel any previous place prediction requests
                 mHandler.removeCallbacksAndMessages(null);
@@ -103,9 +104,9 @@ public class PlacePredictionsActivity extends AppCompatActivity {
 
 
         final LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        mViews.list.setLayoutManager(layoutManager);
-        mViews.list.setAdapter(mAdapter);
-        mViews.list.addItemDecoration(
+        mViews.mList.setLayoutManager(layoutManager);
+        mViews.mList.setAdapter(mAdapter);
+        mViews.mList.addItemDecoration(
                 new DividerItemDecoration(this, layoutManager.getOrientation()));
     }
 
@@ -125,6 +126,12 @@ public class PlacePredictionsActivity extends AppCompatActivity {
                                     @Nullable FindAutocompletePredictionsResponse result) {
                                 List<AutocompletePrediction> predictions =
                                         result == null ? null : result.getAutocompletePredictions();
+                                mViews.mError.setVisibility(View.INVISIBLE);
+                                mViews.mEmpty.setVisibility(
+                                        (predictions == null || predictions.isEmpty())
+                                                ? View.VISIBLE
+                                                : View.INVISIBLE
+                                );
                                 mAdapter.setPredictions(predictions);
                             }
                         })
@@ -132,6 +139,8 @@ public class PlacePredictionsActivity extends AppCompatActivity {
                         new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception exception) {
+                                mViews.mError.setVisibility(View.VISIBLE);
+                                mAdapter.setPredictions(null);
                                 Log.e(TAG, Log.getStackTraceString(exception));
                             }
                         })
@@ -140,21 +149,25 @@ public class PlacePredictionsActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(
                                     @NonNull Task<FindAutocompletePredictionsResponse> task) {
-                                mViews.progress.setIndeterminate(false);
+                                mViews.mProgress.setIndeterminate(false);
                             }
                         });
     }
 
 
     private static final class ViewHolder {
-        final Toolbar toolbar;
-        final ProgressBar progress;
-        final RecyclerView list;
+        final Toolbar mToolbar;
+        final ProgressBar mProgress;
+        final RecyclerView mList;
+        final View mEmpty;
+        final View mError;
 
         ViewHolder(@NonNull Activity activity) {
-            toolbar = activity.findViewById(R.id.toolbar);
-            progress = activity.findViewById(R.id.progress);
-            list = activity.findViewById(R.id.list);
+            mToolbar = activity.findViewById(R.id.toolbar);
+            mProgress = activity.findViewById(R.id.progress);
+            mList = activity.findViewById(R.id.list);
+            mEmpty = activity.findViewById(R.id.empty);
+            mError = activity.findViewById(R.id.error);
         }
     }
 
