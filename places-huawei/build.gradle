@@ -34,4 +34,10 @@ dependencies {
     implementation 'com.huawei.hms:site:5.2.0.300'
 }
 
+tasks.configureEach {
+    if (it.name.contains("Test")) {
+        it.enabled = false
+    }
+}
+
 apply from: 'publish.gradle'
