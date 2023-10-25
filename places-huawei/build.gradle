@@ -20,15 +20,8 @@ rootProject.allprojects {
     }
 }
 
-apply plugin: 'com.android.library'
-
 android {
-    compileSdkVersion 30
-
     defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 30
-
         consumerProguardFiles 'consumer-rules.pro'
     }
 }

@@ -14,17 +14,6 @@
  * limitations under the License.
  */
 
-apply plugin: 'com.android.library'
-
-android {
-    compileSdkVersion 30
-
-    defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 30
-    }
-}
-
 dependencies {
     api 'androidx.annotation:annotation:1.2.0'
 

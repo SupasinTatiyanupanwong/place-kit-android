@@ -26,16 +26,9 @@ buildscript {
     }
 }
 
-apply plugin: 'com.android.application'
-
 android {
-    compileSdkVersion 30
-
     defaultConfig {
         applicationId 'dev.supasintatiyanupanwong.samples.android.kits.places'
-
-        minSdkVersion 19
-        targetSdkVersion 30
     }
 
     flavorDimensions 'vendor'

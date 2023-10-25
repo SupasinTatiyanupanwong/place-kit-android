@@ -36,6 +36,23 @@ allprojects {
     }
 }
 
+subprojects { project ->
+    if (project.name == 'sample') {
+        apply plugin: 'com.android.application'
+    } else {
+        apply plugin: 'com.android.library'
+    }
+
+    android {
+        compileSdk 30
+
+        defaultConfig {
+            minSdk 19
+            targetSdk 30
+        }
+    }
+}
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
