@@ -62,27 +62,16 @@ However, it is recommended to separate builds between them as next:
 ```groovy
 android {
     // ...
-    flavorDimensions 'vendor'
+    flavorDimensions += 'vendor'
     productFlavors {
         google
         huawei { applicationIdSuffix '.huawei' }
     }
 }
 
-configurations {
-    google
-    huawei
-
-    googleImplementation.extendsFrom(google)
-    googleCompileOnly.extendsFrom(huawei)
-
-    huaweiImplementation.extendsFrom(huawei)
-    huaweiCompileOnly.extendsFrom(google)
-}
-
 dependencies {
-    google 'dev.supasintatiyanupanwong.libraries.android.kits.places:places-google:1.0.0'
-    huawei 'dev.supasintatiyanupanwong.libraries.android.kits.places:places-huawei:1.0.0'
+    googleImplementation 'dev.supasintatiyanupanwong.libraries.android.kits.places:places-google:1.0.0'
+    huaweiImplementation 'dev.supasintatiyanupanwong.libraries.android.kits.places:places-huawei:1.0.0'
 }
 ```
 

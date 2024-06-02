@@ -17,9 +17,7 @@
 package dev.supasintatiyanupanwong.samples.android.kits.places;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,54 +27,57 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dev.supasintatiyanupanwong.libraries.android.kits.places.model.AutocompletePrediction;
+import dev.supasintatiyanupanwong.samples.android.kits.places.databinding.PlacePredictionsItemBinding;
 
 public class PlacePredictionsAdapter extends
         RecyclerView.Adapter<PlacePredictionsAdapter.ViewHolder> {
 
     private final @NonNull List<AutocompletePrediction> mPredictions = new ArrayList<>();
 
-
-    @Override
-    public @NonNull PlacePredictionsAdapter.ViewHolder onCreateViewHolder(
-            @NonNull ViewGroup parent, int viewType) {
+    @Override public @NonNull PlacePredictionsAdapter.ViewHolder onCreateViewHolder(
+            @NonNull ViewGroup parent,
+            int viewType
+    ) {
         final LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         return new PlacePredictionsAdapter.ViewHolder(
-                inflater.inflate(R.layout.place_predictions_item, parent, false));
+                PlacePredictionsItemBinding.inflate(inflater, parent, false)
+        );
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull PlacePredictionsAdapter.ViewHolder holder, int position) {
+    @Override public void onBindViewHolder(
+            @NonNull PlacePredictionsAdapter.ViewHolder holder,
+            int position
+    ) {
         holder.setPrediction(mPredictions.get(position));
     }
 
-    @Override
-    public int getItemCount() {
+    @Override public int getItemCount() {
         return mPredictions.size();
     }
 
-    public void setPredictions(@Nullable List<AutocompletePrediction> predictions) {
+    public void setPredictions(
+            @Nullable List<AutocompletePrediction> predictions
+    ) {
         mPredictions.clear();
         if (predictions != null) {
             mPredictions.addAll(predictions);
         }
+        // noinspection NotifyDataSetChanged
         notifyDataSetChanged();
     }
 
-
     static class ViewHolder extends RecyclerView.ViewHolder {
-        private final TextView mTitle;
-        private final TextView mAddress;
+        private final PlacePredictionsItemBinding mBinding;
 
-        ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            mTitle = itemView.findViewById(R.id.title);
-            mAddress = itemView.findViewById(R.id.address);
+        ViewHolder(@NonNull PlacePredictionsItemBinding binding) {
+            super(binding.getRoot());
+
+            mBinding = binding;
         }
 
         void setPrediction(AutocompletePrediction prediction) {
-            mTitle.setText(prediction.getPrimaryText());
-            mAddress.setText(prediction.getSecondaryText());
+            mBinding.title.setText(prediction.getPrimaryText());
+            mBinding.address.setText(prediction.getSecondaryText());
         }
     }
-
 }

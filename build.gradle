@@ -17,8 +17,8 @@
 buildscript {
     repositories {
         google()
-        jcenter()
         mavenCentral()
+        jcenter() // Required for Volley dependency in Google Places SDK for Android
     }
 
     dependencies {
@@ -31,8 +31,8 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
         mavenCentral()
+        jcenter() // Required for Volley dependency in Google Places SDK for Android
     }
 }
 
@@ -44,11 +44,11 @@ subprojects { project ->
     }
 
     android {
-        compileSdk 30
+        compileSdk 34
 
         defaultConfig {
             minSdk 19
-            targetSdk 30
+            targetSdk 34
         }
     }
 }

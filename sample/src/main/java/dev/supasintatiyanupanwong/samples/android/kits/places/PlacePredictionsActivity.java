@@ -16,21 +16,17 @@
 
 package dev.supasintatiyanupanwong.samples.android.kits.places;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
-import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
@@ -38,21 +34,17 @@ import dev.supasintatiyanupanwong.libraries.android.kits.places.PlaceKit;
 import dev.supasintatiyanupanwong.libraries.android.kits.places.model.AutocompletePrediction;
 import dev.supasintatiyanupanwong.libraries.android.kits.places.model.TypeFilter;
 import dev.supasintatiyanupanwong.libraries.android.kits.places.net.FindAutocompletePredictionsRequest;
-import dev.supasintatiyanupanwong.libraries.android.kits.places.net.FindAutocompletePredictionsResponse;
 import dev.supasintatiyanupanwong.libraries.android.kits.places.net.PlacesClient;
-import dev.supasintatiyanupanwong.libraries.android.kits.tasks.Task;
-import dev.supasintatiyanupanwong.libraries.android.kits.tasks.listeners.OnCompleteListener;
-import dev.supasintatiyanupanwong.libraries.android.kits.tasks.listeners.OnFailureListener;
-import dev.supasintatiyanupanwong.libraries.android.kits.tasks.listeners.OnSuccessListener;
+import dev.supasintatiyanupanwong.samples.android.kits.places.databinding.PlacePredictionsActivityBinding;
 
 public class PlacePredictionsActivity extends AppCompatActivity {
 
     private static final String TAG = PlacePredictionsActivity.class.getSimpleName();
 
-    private final @NonNull Handler mHandler = new Handler();
+    private final @NonNull Handler mHandler = new Handler(Looper.getMainLooper());
     private final @NonNull PlacePredictionsAdapter mAdapter = new PlacePredictionsAdapter();
 
-    private ViewHolder mViews;
+    private PlacePredictionsActivityBinding mBinding;
     private PlacesClient mPlacesClient;
 
     public PlacePredictionsActivity() {
@@ -63,14 +55,14 @@ public class PlacePredictionsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mViews = new ViewHolder(this);
+        mBinding = PlacePredictionsActivityBinding.bind(findViewById(android.R.id.content));
 
         mPlacesClient = PlaceKit.createClient(this);
 
-        mViews.mToolbar.setTitle("Place Kit Sample");
-        mViews.mToolbar.inflateMenu(R.menu.place_predictions_menu);
+        mBinding.toolbar.setTitle("Place Kit Sample");
+        mBinding.toolbar.inflateMenu(R.menu.place_predictions_menu);
 
-        SearchView searchView = (SearchView) mViews.mToolbar.getMenu()
+        SearchView searchView = (SearchView) mBinding.toolbar.getMenu()
                 .findItem(R.id.place_predictions_search)
                 .getActionView();
         searchView.setQueryHint("Search a Place");
@@ -86,27 +78,21 @@ public class PlacePredictionsActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(final String newText) {
-                mViews.mProgress.setIndeterminate(true);
+                mBinding.progress.setIndeterminate(true);
 
                 // Cancel any previous place prediction requests
                 mHandler.removeCallbacksAndMessages(null);
 
                 // Start a new place prediction request in 300 ms
-                mHandler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        getPlacePredictions(newText);
-                    }
-                }, 300);
+                mHandler.postDelayed(() -> getPlacePredictions(newText), 300);
                 return true;
             }
         });
 
-
         final LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        mViews.mList.setLayoutManager(layoutManager);
-        mViews.mList.setAdapter(mAdapter);
-        mViews.mList.addItemDecoration(
+        mBinding.list.setLayoutManager(layoutManager);
+        mBinding.list.setAdapter(mAdapter);
+        mBinding.list.addItemDecoration(
                 new DividerItemDecoration(this, layoutManager.getOrientation()));
     }
 
@@ -119,56 +105,23 @@ public class PlacePredictionsActivity extends AppCompatActivity {
                         .build();
 
         mPlacesClient.findAutocompletePredictions(newRequest)
-                .addOnSuccessListener(
-                        new OnSuccessListener<FindAutocompletePredictionsResponse>() {
-                            @Override
-                            public void onSuccess(
-                                    @Nullable FindAutocompletePredictionsResponse result) {
-                                List<AutocompletePrediction> predictions =
-                                        result == null ? null : result.getAutocompletePredictions();
-                                mViews.mError.setVisibility(View.INVISIBLE);
-                                mViews.mEmpty.setVisibility(
-                                        (predictions == null || predictions.isEmpty())
-                                                ? View.VISIBLE
-                                                : View.INVISIBLE
-                                );
-                                mAdapter.setPredictions(predictions);
-                            }
-                        })
-                .addOnFailureListener(
-                        new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception exception) {
-                                mViews.mError.setVisibility(View.VISIBLE);
-                                mAdapter.setPredictions(null);
-                                Log.e(TAG, Log.getStackTraceString(exception));
-                            }
-                        })
-                .addOnCompleteListener(
-                        new OnCompleteListener<FindAutocompletePredictionsResponse>() {
-                            @Override
-                            public void onComplete(
-                                    @NonNull Task<FindAutocompletePredictionsResponse> task) {
-                                mViews.mProgress.setIndeterminate(false);
-                            }
-                        });
+                .addOnSuccessListener(result -> {
+                    List<AutocompletePrediction> predictions = result == null
+                            ? null
+                            : result.getAutocompletePredictions();
+                    mBinding.error.setVisibility(View.INVISIBLE);
+                    mBinding.empty.setVisibility(
+                            (predictions == null || predictions.isEmpty())
+                                    ? View.VISIBLE
+                                    : View.INVISIBLE
+                    );
+                    mAdapter.setPredictions(predictions);
+                })
+                .addOnFailureListener(exception -> {
+                    mBinding.error.setVisibility(View.VISIBLE);
+                    mAdapter.setPredictions(null);
+                    Log.e(TAG, Log.getStackTraceString(exception));
+                })
+                .addOnCompleteListener(task -> mBinding.progress.setIndeterminate(false));
     }
-
-
-    private static final class ViewHolder {
-        final Toolbar mToolbar;
-        final ProgressBar mProgress;
-        final RecyclerView mList;
-        final View mEmpty;
-        final View mError;
-
-        ViewHolder(@NonNull Activity activity) {
-            mToolbar = activity.findViewById(R.id.toolbar);
-            mProgress = activity.findViewById(R.id.progress);
-            mList = activity.findViewById(R.id.list);
-            mEmpty = activity.findViewById(R.id.empty);
-            mError = activity.findViewById(R.id.error);
-        }
-    }
-
 }
