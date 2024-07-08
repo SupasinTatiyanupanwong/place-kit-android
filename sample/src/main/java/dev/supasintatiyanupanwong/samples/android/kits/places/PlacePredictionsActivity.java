@@ -97,6 +97,19 @@ public class PlacePredictionsActivity extends AppCompatActivity {
     }
 
     private void getPlacePredictions(String query) {
+        if (query == null || query.isEmpty()) {
+            mBinding.progress.setIndeterminate(false);
+            mBinding.hint.setVisibility(View.VISIBLE);
+            mBinding.empty.setVisibility(View.INVISIBLE);
+            mBinding.error.setVisibility(View.INVISIBLE);
+
+            mAdapter.setPredictions(null);
+
+            return;
+        }
+
+        mBinding.hint.setVisibility(View.INVISIBLE);
+
         final FindAutocompletePredictionsRequest newRequest =
                 new FindAutocompletePredictionsRequest.Builder()
                         .setTypeFilter(TypeFilter.ESTABLISHMENT)

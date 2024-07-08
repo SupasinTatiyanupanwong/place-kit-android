@@ -16,6 +16,8 @@
 
 package dev.supasintatiyanupanwong.samples.android.kits.places;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -78,6 +80,15 @@ public class PlacePredictionsAdapter extends
         void setPrediction(AutocompletePrediction prediction) {
             mBinding.title.setText(prediction.getPrimaryText());
             mBinding.address.setText(prediction.getSecondaryText());
+
+            itemView.setOnClickListener(ignored ->
+                    itemView.getContext().startActivity(
+                            new Intent(
+                                    Intent.ACTION_VIEW,
+                                    Uri.parse("geo:0,0?q=" + prediction.getPrimaryText())
+                            )
+                    )
+            );
         }
     }
 }

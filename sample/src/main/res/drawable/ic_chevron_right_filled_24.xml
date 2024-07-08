@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright 2020 Supasin Tatiyanupanwong
+  ~ Copyright 2024 Supasin Tatiyanupanwong
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -15,17 +15,15 @@
   ~ limitations under the License.
 -->
 
-<menu
+<vector
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
 
-    <item
-        android:id="@+id/place_predictions_search"
-        android:icon="@drawable/ic_search_filled_24"
-        android:title="Search"
-        app:actionViewClass="androidx.appcompat.widget.SearchView"
-        app:showAsAction="collapseActionView|ifRoom"
-        tools:ignore="HardcodedText" />
+    <path
+        android:fillColor="@android:color/black"
+        android:pathData="M10,6L8.59,7.41 13.17,12l-4.58,4.59L10,18l6,-6z" />
 
-</menu>
+</vector>
